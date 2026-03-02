@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     // Favicon padrão — use o ícone da palmeira
     icon: [
       { url: "/logo-icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo-badge.svg", sizes: "any" },
     ],
     // Ícone para iOS (Apple touch icon) — precisa de fundo, use o badge quadrado
     apple: [
