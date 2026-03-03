@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import MetallicLogo from "@/app/components/MetallicLogo";
 export default function Manifesto() {
   const text =
-    "Na Ponira Lab, o design é a alma que projeta, a tecnologia é o corpo que executa e a estratégia é o sopro que comunica. Criamos organismos digitais onde a engenharia de software sustenta a vitalidade estética e a voz da marca. Unimos precisão técnica e sensibilidade para transformar negócios em infraestruturas de alta performance e autoridade absoluta.";
+    "Na Ponira Lab, o design é a alma que projeta, a tecnologia é o corpo que executa e a estratégia é a voz que comunica. Criamos organismos digitais onde a engenharia de software sustenta a vitalidade estética e a voz da marca. Unimos precisão técnica e sensibilidade para transformar negócios em infraestruturas de alta performance e autoridade absoluta.";
 
   const words = text.split(" ");
 
   // Palavras que ganharão o destaque no novo amarelo
-  const highlights = ["alma", "corpo", "sopro", "autoridade"];
+  const highlights = ["alma", "corpo", "voz", "autoridade"];
 
   return (
     <section className="py-32 px-6 max-w-7xl mx-auto flex items-center">

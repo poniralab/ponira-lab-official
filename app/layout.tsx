@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Ponira Lab",
     title: "Ponira Lab — Design, Branding & Development",
     description:
-      "Agência boutique carioca com três frentes: Studio, Creative e Systems. Corpo, Alma & Sopro.",
+      "Agência boutique carioca com três frentes: Studio, Creative e Systems. Corpo, Alma & Voz.",
     images: [
       {
         // Crie uma og-image usando o logo-full.svg sobre fundo #2B1B16

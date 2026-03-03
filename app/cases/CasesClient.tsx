@@ -13,7 +13,7 @@ import { cases, labMeta, type Lab } from "@/lib/cases";
 const filters: { value: "all" | Lab; label: string }[] = [
   { value: "all", label: "Todos" },
   { value: "studio", label: "Studio / Alma" },
-  { value: "creative", label: "Creative / Sopro" },
+  { value: "creative", label: "Creative / Voz" },
   { value: "systems", label: "Systems / Corpo" },
 ];
 

@@ -111,7 +111,7 @@ function internalEmailHtml({
         <tr>
           <td style="padding:20px 32px;border-top:1px solid rgba(245,245,245,0.05);">
             <p style="margin:0;color:rgba(245,245,245,0.15);font-size:9px;letter-spacing:2px;text-transform:uppercase;">
-              Corpo: Maria · Sopro &amp; Alma: Carol · poniralab.com
+              Corpo: Maria · Voz &amp; Alma: Carol · poniralab.com
             </p>
           </td>
         </tr>
@@ -153,7 +153,7 @@ function autoReplyHtml({ nome }: { nome: string }) {
               PONIRA.LAB
             </p>
             <p style="margin:0;color:rgba(43,27,22,0.6);font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;">
-              Corpo · Alma · Sopro
+              Corpo · Alma · Voz
             </p>
           </td>
         </tr>

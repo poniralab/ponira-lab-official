@@ -445,7 +445,7 @@ export const labMeta: Record<Lab, { label: string; description: string }> = {
     description: "Identidade visual, branding e design estratégico.",
   },
   creative: {
-    label: "Creative / Sopro",
+    label: "Creative / Voz",
     description: "Social media, estratégia de conteúdo e marketing.",
   },
   systems: {

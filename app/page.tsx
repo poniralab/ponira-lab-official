@@ -25,12 +25,6 @@ export default function Home() {
 
         <Hero />
 
-        <div id="manifesto">
-          <SectionReveal>
-            <Manifesto />
-          </SectionReveal>
-        </div>
-
         <div id="labs">
           <SectionReveal>
             <Labs />

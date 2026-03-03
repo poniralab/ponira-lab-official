@@ -134,7 +134,7 @@ export default function CreativePage() {
             </div>
 
             <h1 className="text-6xl md:text-8xl font-display italic text-ponira-white leading-[0.9] mb-8">
-              Sopro.
+              Voz.
             </h1>
 
             <p className="text-ponira-white/50 font-body font-light text-xl max-w-lg leading-relaxed mb-10">

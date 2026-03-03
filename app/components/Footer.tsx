@@ -114,7 +114,7 @@ export default function Footer() {
             </span>
           </div>
           <div className="text-ponira-white/20 font-body text-[8px] uppercase tracking-[0.3em]">
-            Corpo: Maria • Sopro & Alma: Carol
+            Corpo: Maria • Voz & Alma: Carol
           </div>
         </div>
       </div>

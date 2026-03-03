@@ -16,7 +16,7 @@ const links = [
   },
   {
     id: "tiktok",
-    label: "Sopro / Dinâmico",
+    label: "Voz / Dinâmico",
     title: "TikTok",
     description: "Insights rápidos e o movimento constante do laboratório.",
     url: "https://tiktok.com/@poniralab",
@@ -76,7 +76,7 @@ export default function Linktree() {
             Ponira Lab
           </h1>
           <p className="text-[10px] uppercase tracking-[0.4em] text-ponira-yellow font-bold">
-            Corpo • Alma • Sopro
+            Corpo • Alma • Voz
           </p>
         </header>
 
