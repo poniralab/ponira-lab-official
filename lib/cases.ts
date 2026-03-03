@@ -364,7 +364,7 @@ export const cases: CaseStudy[] = [
     tools: ["Next.js", "Framer Motion", "Tailwind CSS", "UI Design"],
     externalUrl: "https://linktree-agatha.vercel.app",
     externalLabel: "Ver Projeto",
-    featured: true,
+    featured: false,
   },
 
   {
@@ -386,6 +386,25 @@ export const cases: CaseStudy[] = [
     externalUrl: "https://lbem-vercel.app",
     externalLabel: "Ver Projeto",
     featured: false,
+  },
+  {
+    slug: "landing-page-cjp",
+    lab: "systems",
+    title: "CJP — Landing Page",
+    subtitle: "Design e desenvolvimento de landing page.",
+    category: "Landing Page",
+    year: "2024",
+    cover: "/covers/landing-page-cjp.png",
+    images: ["/covers/landing-page-cjp.png"],
+    context: "O Colégio João Pedro chegou em 2025 com um desafio específico: abrir matrículas para 2026 num ciclo onde a decisão de família começa cedo e o digital é o primeiro contato. A escola tinha metodologia sólida — sociointeracionismo, cultura maker, bilinguismo real — mas precisava de uma página que convertesse essa proposta em confiança antes mesmo da visita presencial.",
+
+    process: "A landing page foi construída para guiar uma decisão emocional com lógica clara. Cada seção responde a uma objeção silenciosa de quem está escolhendo onde colocar o filho: segurança do ambiente, transparência pedagógica, infraestrutura, história da escola. O formulário de captação foi simplificado ao máximo — nome, WhatsApp e série de interesse — para reduzir fricção no momento mais crítico do funil. O design seguiu o sistema visual já criado pela Carol, garantindo que LP e identidade da escola falassem a mesma língua.",
+
+    result: "Uma página de captação que transforma a curiosidade de um pai ou mãe em agendamento de visita. Construída em Next.js e hospedada na Vercel, carrega em menos de 2 segundos em mobile — onde a maior parte das pesquisas por escola acontece. A LP ficou ativa para o ciclo de matrículas 2026 e representa a primeira entrega onde identidade visual, site institucional e estratégia de conversão foram pensados juntos pela mesma agência.",
+    tools: ["Next.js", "React", "Vercel"],
+    externalUrl: "https://colegio-joao-pedro.vercel.app/lp",
+    externalLabel: "Ver Projeto",
+    featured: true,
   },
 ];
 

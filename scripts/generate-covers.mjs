@@ -52,6 +52,7 @@ const TARGETS = [
     url: "https://lbem-vercel.app",
     type: "vercel",
   },
+  { slug: "landing-page-cjp", url: "https://colegio-joao-pedro.vercel.app/lp", type: "vercel" },
 ];
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));

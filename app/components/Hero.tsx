@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
+
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement>(null);
 

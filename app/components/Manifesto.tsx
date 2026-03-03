@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-
+import MetallicLogo from "@/app/components/MetallicLogo";
 export default function Manifesto() {
   const text = "Na Ponira Lab, o design é a alma que projeta, a tecnologia é o corpo que executa e a estratégia é o sopro que comunica. Criamos organismos digitais onde a engenharia de software sustenta a vitalidade estética e a voz da marca. Unimos precisão técnica e sensibilidade para transformar negócios em infraestruturas de alta performance e autoridade absoluta.";
   
@@ -41,7 +41,7 @@ export default function Manifesto() {
 
         <div className="md:col-span-5 lg:col-span-6 flex justify-center md:justify-end">
            {/* Ícone da Palmeira ou Logo mantido conforme o layout anterior */}
-           <img src="/logo-icon.svg" className="w-32 h-32 md:w-56 md:h-56 opacity-20 grayscale mix-blend-screen" />
+           <MetallicLogo />
         </div>
       </div>
     </section>
