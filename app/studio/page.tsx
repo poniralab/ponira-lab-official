@@ -73,6 +73,14 @@ const tools = [
   "Brand System",
 ];
 
+const BASE = "https://poniralab.com";
+
+const navLinks = [
+  { name: "Iniciar Projeto", href: `${BASE}/#contato` },
+];
+
+
+
 // ─── COMPONENTE ───────────────────────────────────────────────────────────
 
 export default function StudioPage() {
@@ -358,12 +366,11 @@ export default function StudioPage() {
                 </Link>
               </p>
             </div>
-            <Link
-              href="/contato"
-              className="shrink-0 px-10 py-5 bg-amber-400 text-ponira-brown font-body text-xs uppercase tracking-widest font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-lg shadow-amber-900/20"
+            <a href="https://www.poniralab.com/contato"
+            className="shrink-0 px-10 py-5 bg-amber-400 text-ponira-brown font-body text-xs uppercase tracking-widest font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-lg shadow-amber-900/20"
             >
-              Iniciar projeto
-            </Link>
+            Iniciar projeto
+            </a>
           </motion.div>
         </section>
 
