@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Grainient from "@/Grainient";
-import Navbar from "@/app/components/Navbar";
+import NavbarLab from "@/app/components/NavbarLab";
 import Footer from "@/app/components/Footer";
 import ViewportBlur from "@/app/components/ViewportBlur";
 import { cases } from "@/lib/cases";
@@ -86,7 +86,7 @@ export default function StudioPage() {
       <ViewportBlur />
 
       <div className="relative z-10">
-        <Navbar />
+        <NavbarLab />
 
         {/* ── HERO ── */}
         <section className="pt-48 pb-32 px-6 max-w-7xl mx-auto">
