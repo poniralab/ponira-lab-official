@@ -8,6 +8,7 @@ import Grainient from "@/Grainient";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import ViewportBlur from "@/app/components/ViewportBlur";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { cases, labMeta, type Lab } from "@/lib/cases";
 
 const filters: { value: "all" | Lab; label: string }[] = [
@@ -21,14 +22,12 @@ export default function CasesClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Lê o filtro da URL — fallback para "all" se ausente ou inválido
   const labParam = searchParams.get("lab");
   const validLabs: (Lab | "all")[] = ["all", "studio", "creative", "systems"];
   const active = validLabs.includes(labParam as Lab)
     ? (labParam as Lab | "all")
     : "all";
 
-  // Atualiza a URL ao trocar filtro, sem rolar a página
   const setFilter = useCallback(
     (value: "all" | Lab) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -110,44 +109,58 @@ export default function CasesClient() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: i * 0.04 }}
+                  className="group"
                 >
-                  <Link href={`/cases/${c.slug}`} className="group block">
-                    {/* Cover */}
-                    <div className="aspect-[4/3] mb-6 overflow-hidden rounded-sm border border-ponira-white/5 relative bg-black/20">
-                      {c.cover ? (
-                        <img
-                          src={c.cover}
-                          alt={c.title}
-                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gradient-to-tr from-ponira-brown/60 to-transparent" />
-                      )}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500 flex items-center justify-center">
-                        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-ponira-yellow font-body text-xs uppercase tracking-widest border border-ponira-yellow/40 px-4 py-2 rounded-full backdrop-blur-sm bg-black/30">
-                          Ver Case ↗
-                        </span>
-                      </div>
+                  <CardContainer containerClassName="w-full" className="w-full">
+                    <CardBody className="w-full">
+                      <Link href={`/cases/${c.slug}`} className="block">
 
-                      {/* Lab badge */}
-                      <div className="absolute top-4 left-4">
-                        <span className="text-[8px] font-body font-black uppercase tracking-widest px-2 py-1 rounded-full bg-black/40 backdrop-blur-sm text-ponira-yellow border border-ponira-yellow/20">
-                          {labMeta[c.lab].label}
-                        </span>
-                      </div>
-                    </div>
+                        {/* Cover */}
+                        <CardItem translateZ="50" className="w-full">
+                          <div className="aspect-video mb-6 overflow-hidden rounded-tr-[80px] rounded-bl-[80px] border border-ponira-white/5 relative bg-black/20">
+                            {c.cover ? (
+                              <img
+                                src={c.cover}
+                                alt={c.title}
+                                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                              />
+                            ) : (
+                              <div className="absolute inset-0 bg-gradient-to-tr from-ponira-brown/60 to-transparent flex items-center justify-center">
+                                <span className="text-ponira-yellow/20 font-display text-6xl italic">✦</span>
+                              </div>
+                            )}
 
-                    {/* Info */}
-                    <span className="text-ponira-yellow font-body text-[10px] uppercase tracking-[0.2em] font-black block mb-2">
-                      {c.category} · {c.year}
-                    </span>
-                    <h2 className="text-2xl font-display italic text-ponira-white group-hover:translate-x-1 transition-transform duration-300 mb-2">
-                      {c.title}
-                    </h2>
-                    <p className="text-ponira-white/40 font-body font-light text-sm leading-relaxed">
-                      {c.subtitle}
-                    </p>
-                  </Link>
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
+                              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-ponira-yellow font-body text-xs uppercase tracking-widest border border-ponira-yellow/40 px-4 py-2 rounded-full backdrop-blur-sm bg-black/30">
+                                Ver Case ↗
+                              </span>
+                            </div>
+
+                            {/* Lab badge */}
+                            <CardItem translateZ="80" className="absolute top-4 left-4 z-10">
+                              <span className="text-[8px] font-body font-black uppercase tracking-widest px-2 py-1 rounded-full bg-black/40 backdrop-blur-sm text-ponira-yellow border border-ponira-yellow/20">
+                                {labMeta[c.lab].label}
+                              </span>
+                            </CardItem>
+                          </div>
+                        </CardItem>
+
+                        {/* Info */}
+                        <CardItem translateZ="30" className="flex flex-col gap-1">
+                          <span className="text-ponira-yellow font-body text-[10px] uppercase tracking-[0.2em] font-black block mb-2">
+                            {c.category} · {c.year}
+                          </span>
+                          <h2 className="text-2xl font-display italic text-ponira-white group-hover:translate-x-2 transition-transform duration-300 mb-1">
+                            {c.title}
+                          </h2>
+                          <p className="text-ponira-white/40 font-body font-light text-sm leading-relaxed">
+                            {c.subtitle}
+                          </p>
+                        </CardItem>
+
+                      </Link>
+                    </CardBody>
+                  </CardContainer>
                 </motion.div>
               ))}
             </AnimatePresence>

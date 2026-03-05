@@ -9,6 +9,7 @@ import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import ViewportBlur from "@/app/components/ViewportBlur";
 import CaseGallery from "@/app/components/CaseGallery";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { getCaseBySlug, cases, labMeta } from "@/lib/cases";
 
 interface Props {
@@ -28,8 +29,6 @@ export default function CaseClient({ params }: Props) {
   const section2 = galleryImages.slice(3, 7);
   const section3 = galleryImages.slice(7);
 
-  // Studio/Creative têm composições de design → object-center
-  // Systems têm screenshots de apps → object-top
   const centerCrop = c.lab === "studio" || c.lab === "creative";
 
   return (
@@ -82,11 +81,27 @@ export default function CaseClient({ params }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <CaseGallery
-                images={[{ src: c.cover, alt: c.title }]}
-                layout="single"
-                centerCrop={centerCrop}
-              />
+              {/* Cover hero com padrão 3d-card */}
+              <CardContainer containerClassName="w-full" className="w-full">
+                <CardBody className="w-full">
+                  <CardItem translateZ="40" className="w-full">
+                    <div className="aspect-video overflow-hidden rounded-tr-[80px] rounded-bl-[80px] border border-ponira-white/5 relative bg-black/20">
+                      <img
+                        src={c.cover}
+                        alt={c.title}
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: centerCrop ? "center" : "top center" }}
+                      />
+                      {/* Lab badge flutuante */}
+                      <CardItem translateZ="80" className="absolute top-5 left-5 z-10">
+                        <span className="text-[8px] font-body font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-sm text-ponira-yellow border border-ponira-yellow/20">
+                          {labMeta[c.lab].label}
+                        </span>
+                      </CardItem>
+                    </div>
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             </motion.div>
           )}
         </section>
@@ -214,22 +229,47 @@ export default function CaseClient({ params }: Props) {
             <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-8">
               Próximo Case
             </span>
-            <Link
-              href={`/cases/${next.slug}`}
-              className="group flex items-end justify-between gap-6"
-            >
-              <div>
-                <span className="text-ponira-yellow font-body text-[10px] uppercase tracking-[0.3em] font-bold opacity-60 block mb-3">
-                  {next.category}
-                </span>
-                <h2 className="text-4xl md:text-6xl font-display italic text-ponira-white group-hover:translate-x-3 transition-transform duration-500">
-                  {next.title}
-                </h2>
-              </div>
-              <span className="text-ponira-yellow text-4xl group-hover:translate-x-2 transition-transform duration-300 shrink-0 mb-2">
-                →
-              </span>
-            </Link>
+
+            <CardContainer containerClassName="w-full" className="w-full">
+              <CardBody className="w-full">
+                <Link href={`/cases/${next.slug}`} className="group block">
+                  {/* Cover mini do próximo */}
+                  <CardItem translateZ="40" className="w-full mb-8">
+                    <div className="aspect-video overflow-hidden rounded-tr-[80px] rounded-bl-[80px] border border-ponira-white/5 relative bg-black/20">
+                      {next.cover ? (
+                        <img
+                          src={next.cover}
+                          alt={next.title}
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-tr from-ponira-brown/60 to-transparent" />
+                      )}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-ponira-yellow font-body text-xs uppercase tracking-widest border border-ponira-yellow/40 px-4 py-2 rounded-full backdrop-blur-sm bg-black/30">
+                          Ver Case ↗
+                        </span>
+                      </div>
+                    </div>
+                  </CardItem>
+
+                  {/* Info do próximo */}
+                  <CardItem translateZ="30" className="flex items-end justify-between gap-6">
+                    <div>
+                      <span className="text-ponira-yellow font-body text-[10px] uppercase tracking-[0.3em] font-bold opacity-60 block mb-3">
+                        {next.category}
+                      </span>
+                      <h2 className="text-4xl md:text-6xl font-display italic text-ponira-white group-hover:translate-x-3 transition-transform duration-500">
+                        {next.title}
+                      </h2>
+                    </div>
+                    <span className="text-ponira-yellow text-4xl group-hover:translate-x-2 transition-transform duration-300 shrink-0 mb-2">
+                      →
+                    </span>
+                  </CardItem>
+                </Link>
+              </CardBody>
+            </CardContainer>
           </div>
         </section>
 
