@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Grainient from "@/Grainient";
 import NavbarLab from "@/app/components/NavbarLab";
@@ -9,6 +9,7 @@ import Footer from "@/app/components/Footer";
 import ViewportBlur from "@/app/components/ViewportBlur";
 import { cases } from "@/lib/cases";
 import LogoLoop from "@/components/LogoLoop";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 
 // ─── DADOS ────────────────────────────────────────────────────────────────
 
@@ -101,30 +102,20 @@ export default function StudioPage() {
               <span className="text-amber-400 font-body text-[9px] uppercase tracking-[0.5em] font-black">
                 Ponira Lab
               </span>
-              <span className="text-ponira-white/20 font-body text-[9px]">
-                ✦
-              </span>
+              <span className="text-ponira-white/20 font-body text-[9px]">✦</span>
               <span className="text-amber-400/60 font-body text-[9px] uppercase tracking-[0.5em] font-black">
                 Studio
               </span>
             </div>
-
             <h1 className="text-6xl md:text-8xl font-display italic text-ponira-white leading-[0.9] mb-8">
               Alma.
             </h1>
-
             <p className="text-ponira-white/50 font-body font-light text-xl max-w-lg leading-relaxed mb-6">
               Design & Branding. Construímos marcas que existem antes das
               palavras — identidades com método, intenção e história.
             </p>
-
             <div className="flex flex-wrap gap-3 mt-10">
-              <LogoLoop
-                items={tools}
-                speed={25}
-                accentColor="#FBBF24" // amber para Studio, #FB7185 para Creative, #38BDF8 para Systems
-                className="mt-10"
-              />
+              <LogoLoop items={tools} speed={25} accentColor="#FBBF24" className="mt-10" />
             </div>
           </motion.div>
         </section>
@@ -166,37 +157,48 @@ export default function StudioPage() {
                 onMouseLeave={() => setHoveredCase(null)}
                 className="group"
               >
-                <Link href={`/cases/${c.slug}`} className="block">
-                  <div className="aspect-video mb-6 overflow-hidden rounded-sm border border-ponira-white/5 relative bg-black/20">
-                    {c.cover ? (
-                      <img
-                        src={c.cover}
-                        alt={c.title}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-tr from-amber-900/40 to-transparent flex items-center justify-center">
-                        <span className="text-amber-400/20 font-display text-6xl italic">
-                          ✦
+                <CardContainer containerClassName="w-full" className="w-full">
+                  <CardBody className="w-full">
+                    <Link href={`/cases/${c.slug}`} className="block">
+
+                      {/* Cover */}
+                      <CardItem translateZ="50" className="w-full">
+                        <div className="aspect-video mb-6 overflow-hidden rounded-tr-[80px] rounded-bl-[80px] border border-ponira-white/5 relative bg-black/20">
+                          {c.cover ? (
+                            <img
+                              src={c.cover}
+                              alt={c.title}
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            />
+                          ) : (
+                            <div className="absolute inset-0 bg-gradient-to-tr from-amber-900/40 to-transparent flex items-center justify-center">
+                              <span className="text-amber-400/20 font-display text-6xl italic">✦</span>
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
+                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-amber-400 font-body text-xs uppercase tracking-widest border border-amber-400/40 px-4 py-2 rounded-full backdrop-blur-sm bg-black/30">
+                              Ver Case ↗
+                            </span>
+                          </div>
+                        </div>
+                      </CardItem>
+
+                      {/* Info */}
+                      <CardItem translateZ="30" className="flex flex-col gap-1">
+                        <span className="text-amber-400 font-display text-[10px] font-black tracking-[0.2em] uppercase block mb-2">
+                          {c.category} · {c.year}
                         </span>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-amber-400 font-body text-xs uppercase tracking-widest border border-amber-400/40 px-4 py-2 rounded-full backdrop-blur-sm bg-black/30">
-                        Ver Case ↗
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-amber-400 font-display text-[10px] font-black tracking-[0.2em] uppercase block mb-2">
-                    {c.category} · {c.year}
-                  </span>
-                  <h3 className="text-xl font-display italic text-ponira-white group-hover:translate-x-2 transition-transform duration-300 mb-1">
-                    {c.title}
-                  </h3>
-                  <p className="text-ponira-white/40 font-body font-light text-sm">
-                    {c.subtitle}
-                  </p>
-                </Link>
+                        <h3 className="text-xl font-display italic text-ponira-white group-hover:translate-x-2 transition-transform duration-300 mb-1">
+                          {c.title}
+                        </h3>
+                        <p className="text-ponira-white/40 font-body font-light text-sm">
+                          {c.subtitle}
+                        </p>
+                      </CardItem>
+
+                    </Link>
+                  </CardBody>
+                </CardContainer>
               </motion.div>
             ))}
           </div>
@@ -228,58 +230,72 @@ export default function StudioPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative flex flex-col p-8 rounded-sm border transition-colors duration-300 ${
-                  svc.highlight
-                    ? "border-amber-400/30 bg-amber-400/5"
-                    : "border-ponira-white/5 bg-black/10 hover:border-ponira-white/10"
-                }`}
+                className="relative overflow-visible"
               >
+                {/* Badge fora do CardContainer para não ser cortado */}
                 {svc.highlight && (
-                  <div className="absolute -top-3 left-8">
+                  <div className="absolute -top-3 left-8 z-20">
                     <span className="text-[9px] font-body font-black uppercase tracking-widest px-3 py-1 bg-amber-400 text-ponira-brown rounded-full">
                       Mais escolhido
                     </span>
                   </div>
                 )}
 
-                <span className="text-amber-400 font-body text-[9px] uppercase tracking-widest font-black block mb-3">
-                  {svc.tier}
-                </span>
-                <h3 className="text-xl font-display italic text-ponira-white mb-2">
-                  {svc.tagline}
-                </h3>
-
-                <ul className="space-y-3 my-8 flex-1">
-                  {svc.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="text-amber-400 mt-0.5 text-xs">✦</span>
-                      <span className="text-ponira-white/60 font-body font-light text-sm leading-relaxed">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="border-t border-ponira-white/5 pt-6 flex flex-col gap-4">
-                  <div>
-                    <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-1">
-                      A partir de
-                    </span>
-                    <span className="text-2xl font-display text-ponira-white">
-                      {svc.price}
-                    </span>
-                  </div>
-                  <a
-                    href="https://www.poniralab.com/contato"
-                    className={`text-center py-3 rounded-full font-body text-[10px] uppercase tracking-widest transition-all duration-300 ${
+                <CardContainer containerClassName="w-full" className="w-full">
+                  <CardBody
+                    className={`relative flex flex-col p-8 rounded-tr-[80px] rounded-bl-[80px] border transition-colors duration-300 h-full ${
                       svc.highlight
-                        ? "bg-amber-400 text-ponira-brown hover:scale-[1.02]"
-                        : "border border-ponira-white/10 text-ponira-white/50 hover:border-amber-400/30 hover:text-amber-400"
+                        ? "border-amber-400/30 bg-amber-400/5"
+                        : "border-ponira-white/5 bg-black/10 hover:border-ponira-white/10"
                     }`}
                   >
-                    Solicitar orçamento
-                  </a>
-                </div>
+                    {/* Tier + tagline */}
+                    <CardItem translateZ="40" className="mb-2">
+                      <span className="text-amber-400 font-body text-[9px] uppercase tracking-widest font-black block mb-3">
+                        {svc.tier}
+                      </span>
+                      <h3 className="text-xl font-display italic text-ponira-white">
+                        {svc.tagline}
+                      </h3>
+                    </CardItem>
+
+                    {/* Includes */}
+                    <CardItem translateZ="30" className="flex-1 my-8">
+                      <ul className="space-y-3">
+                        {svc.includes.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="text-amber-400 mt-0.5 text-xs">✦</span>
+                            <span className="text-ponira-white/60 font-body font-light text-sm leading-relaxed">
+                              {item}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardItem>
+
+                    {/* Preço + CTA */}
+                    <CardItem translateZ="60" className="border-t border-ponira-white/5 pt-6 flex flex-col gap-4">
+                      <div>
+                        <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-1">
+                          A partir de
+                        </span>
+                        <span className="text-2xl font-display text-ponira-white">
+                          {svc.price}
+                        </span>
+                      </div>
+                      <a
+                        href="https://www.poniralab.com/contato"
+                        className={`text-center py-3 rounded-full font-body text-[10px] uppercase tracking-widest transition-all duration-300 ${
+                          svc.highlight
+                            ? "bg-amber-400 text-ponira-brown hover:scale-[1.02]"
+                            : "border border-ponira-white/10 text-ponira-white/50 hover:border-amber-400/30 hover:text-amber-400"
+                        }`}
+                      >
+                        Solicitar orçamento
+                      </a>
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
               </motion.div>
             ))}
           </div>
@@ -290,7 +306,7 @@ export default function StudioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="border border-ponira-white/5 rounded-sm p-8 bg-black/10"
+            className="border border-ponira-white/5 rounded-tr-[80px] rounded-bl-[80px] p-8 bg-black/10"
           >
             <h3 className="text-ponira-white/60 font-body text-[10px] uppercase tracking-widest font-black mb-6">
               Módulos extras — adicione ao seu pacote
@@ -320,7 +336,7 @@ export default function StudioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between items-center gap-10 py-16 px-12 border border-ponira-white/5 rounded-sm bg-black/10"
+            className="flex flex-col md:flex-row justify-between items-center gap-10 py-16 px-12 border border-ponira-white/5 rounded-tr-[80px] rounded-bl-[80px] bg-black/10"
           >
             <div>
               <h2 className="text-amber-400 font-display text-[10px] uppercase tracking-[0.5em] mb-4 font-bold opacity-85">
@@ -335,9 +351,7 @@ export default function StudioPage() {
               </p>
             </div>
             <div className="flex flex-col items-center gap-3 shrink-0">
-              <span className="text-amber-400/40 font-display text-6xl italic">
-                ✦
-              </span>
+              <span className="text-amber-400/40 font-display text-6xl italic">✦</span>
               <span className="text-ponira-white/20 font-body text-[10px] uppercase tracking-widest">
                 Em breve
               </span>
