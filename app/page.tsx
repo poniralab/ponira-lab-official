@@ -40,6 +40,11 @@ export default function Home() {
             <Founders />
           </SectionReveal>
         </div>
+        <div id="footer">
+          <SectionReveal exitAt={0.88}>
+            <Footer />
+          </SectionReveal>
+        </div>
       </div>
     </main>
   );
