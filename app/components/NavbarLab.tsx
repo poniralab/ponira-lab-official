@@ -5,13 +5,12 @@ import { useState } from "react";
 const BASE = "https://poniralab.com";
 
 const navLinks = [
-  { name: "Manifesto", href: `${BASE}/#manifesto` },
   { name: "Labs", href: `${BASE}/#labs` },
   { name: "Artefatos", href: `${BASE}/#showcase` },
   { name: "Pacotes", href: `${BASE}/#pacotes` },
+  { name: "Sócias", href: `${BASE}/#founders` },
   { name: "Cases", href: `${BASE}/cases` },
   { name: "Contato", href: `${BASE}/contato` },
-  { name: "Sócias", href: `${BASE}/#founders` },
 ];
 
 export default function NavbarLab() {
