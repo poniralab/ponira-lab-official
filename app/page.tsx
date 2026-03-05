@@ -30,6 +30,11 @@ export default function Home() {
             <Showcase />
           </SectionReveal>
         </div>
+        <div id="pacotes">
+          <SectionReveal exitAt={0.92}>
+            <CrossLab />
+          </SectionReveal>
+        </div>
       </div>
     </main>
   );
