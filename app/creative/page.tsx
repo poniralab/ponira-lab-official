@@ -446,14 +446,12 @@ export default function CreativePage() {
               </h2>
               <p className="text-ponira-white/40 font-body font-light text-base leading-relaxed">
                 Precisa de mais de uma frente?{" "}
-                <button
-                  onClick={() => {
-                    window.location.href = "/#pacotes";
-                  }}
+                <a
+                  href="https://poniralab.com/#pacotes"
                   className="text-rose-400/70 hover:text-rose-400 transition-colors"
                 >
                   Conheça nossos pacotes cross-lab →
-                </button>
+                </a>
               </p>
             </div>
             <a
