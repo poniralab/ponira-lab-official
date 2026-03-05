@@ -46,7 +46,7 @@
 /* --- APLICAÇÃO GLOBAL --- */
 
 body {
-  background-color: #2B1B16 !important;
+  background-color: #2b1b16 !important;
   font-family: "ArchivoVariable", sans-serif;
   color: var(--foreground);
 }
@@ -73,7 +73,7 @@ h4 {
 /* --- VARIÁVEIS DE SISTEMA (Cores e Temas) --- */
 :root {
   --radius: 0.625rem;
-  --background: #2B1B16; 
+  --background: #2b1b16;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);

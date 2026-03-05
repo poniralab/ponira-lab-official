@@ -3,9 +3,21 @@
 import Link from "next/link";
 
 const labs = [
-  { name: "Studio", href: "https://studio.poniralab.com", color: "text-amber-400 border-amber-400/25 hover:bg-amber-400/10" },
-  { name: "Creative", href: "https://creative.poniralab.com", color: "text-rose-400 border-rose-400/25 hover:bg-rose-400/10" },
-  { name: "Systems", href: "https://systems.poniralab.com", color: "text-sky-400 border-sky-400/25 hover:bg-sky-400/10" },
+  {
+    name: "Studio",
+    href: "https://studio.poniralab.com",
+    color: "text-amber-400 border-amber-400/25 hover:bg-amber-400/10",
+  },
+  {
+    name: "Creative",
+    href: "https://creative.poniralab.com",
+    color: "text-rose-400 border-rose-400/25 hover:bg-rose-400/10",
+  },
+  {
+    name: "Systems",
+    href: "https://systems.poniralab.com",
+    color: "text-sky-400 border-sky-400/25 hover:bg-sky-400/10",
+  },
 ];
 
 const navLinks = [
@@ -24,12 +36,17 @@ const socialLinks = [
   { label: "WhatsApp", href: "https://wa.me/5521998382038" },
 ];
 
-function FooterLink({ href, children, external = false }: {
+function FooterLink({
+  href,
+  children,
+  external = false,
+}: {
   href: string;
   children: React.ReactNode;
   external?: boolean;
 }) {
-  const cls = "group flex items-center gap-1.5 text-ponira-white/40 hover:text-ponira-yellow font-body text-xs font-light transition-colors duration-200";
+  const cls =
+    "group flex items-center gap-1.5 text-ponira-white/40 hover:text-ponira-yellow font-body text-xs font-light transition-colors duration-200";
   const arrow = (
     <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-[10px]">
       ↗
@@ -39,13 +56,15 @@ function FooterLink({ href, children, external = false }: {
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-        {children}{arrow}
+        {children}
+        {arrow}
       </a>
     );
   }
   return (
     <Link href={href} className={cls}>
-      {children}{arrow}
+      {children}
+      {arrow}
     </Link>
   );
 }
@@ -55,39 +74,43 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-ponira-white/5 overflow-hidden">
-
       {/* Faixa dourada topo */}
       <div
         className="absolute top-0 left-0 right-0 h-px pointer-events-none"
-        style={{ background: "linear-gradient(90deg, transparent 0%, rgba(198,141,7,0.5) 30%, rgba(198,141,7,0.5) 70%, transparent 100%)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(198,141,7,0.5) 30%, rgba(198,141,7,0.5) 70%, transparent 100%)",
+        }}
       />
 
       {/* ── HERO ── */}
       <div className="px-6 md:px-12 pt-16 pb-12 border-b border-ponira-white/5 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
         <h2 className="font-display italic text-ponira-white leading-[0.95] text-4xl md:text-6xl lg:text-7xl max-w-xl">
-          Sua marca merece<br />
-          existir com{" "}
-          <span className="text-ponira-yellow">intenção.</span>
+          Sua marca merece
+          <br />
+          existir com <span className="text-ponira-yellow">intenção.</span>
         </h2>
         <Link
           href="/contato"
           className="group flex items-center gap-3 px-8 py-4 border border-ponira-yellow/20 rounded-full font-body text-[10px] uppercase tracking-widest text-ponira-yellow hover:bg-ponira-yellow hover:text-ponira-brown transition-all duration-300 whitespace-nowrap"
         >
           Iniciar projeto
-          <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+          <span className="group-hover:translate-x-1 transition-transform duration-300">
+            →
+          </span>
         </Link>
       </div>
 
       {/* ── GRID ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-b border-ponira-white/5">
-
         {/* Col 1 — Sobre */}
         <div className="px-6 md:px-12 py-10 lg:border-r border-ponira-white/5">
           <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-5">
             Sobre
           </span>
           <p className="text-ponira-white/40 font-body font-light text-sm leading-relaxed mb-7 max-w-xs">
-            Boutique criativa carioca com três frentes integradas — design, conteúdo e tecnologia com intenção.
+            Boutique criativa carioca com três frentes integradas — design,
+            conteúdo e tecnologia com intenção.
           </p>
           <div className="flex flex-wrap gap-2">
             {labs.map((lab) => (
@@ -126,7 +149,9 @@ export default function Footer() {
           <ul className="space-y-3">
             {socialLinks.map((l) => (
               <li key={l.label}>
-                <FooterLink href={l.href} external>{l.label}</FooterLink>
+                <FooterLink href={l.href} external>
+                  {l.label}
+                </FooterLink>
               </li>
             ))}
           </ul>
@@ -149,7 +174,9 @@ export default function Footer() {
             Base
           </span>
           <p className="text-ponira-white/35 font-body font-light text-xs leading-relaxed mb-7">
-            Rio de Janeiro, RJ<br />Brasil
+            Rio de Janeiro, RJ
+            <br />
+            Brasil
           </p>
 
           <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-2">
@@ -159,12 +186,10 @@ export default function Footer() {
             Em até 24h úteis
           </p>
         </div>
-
       </div>
 
       {/* ── BARRA INFERIOR ── */}
       <div className="px-6 md:px-12 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-
         <div className="flex items-center gap-4">
           <img
             src="/logo-icon.svg"
@@ -194,9 +219,7 @@ export default function Footer() {
             poniralab.com
           </a>
         </div>
-
       </div>
-
     </footer>
   );
 }

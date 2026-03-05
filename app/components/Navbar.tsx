@@ -1,5 +1,10 @@
 "use client";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -12,7 +17,6 @@ const rawNavLinks = [
   { name: "Sócias", href: "/#founders" },
   { name: "Cases", href: "/cases" },
   { name: "Contato", href: "/contato" },
-  
 ];
 
 function useIsSubdomain() {
@@ -55,7 +59,10 @@ export default function Navbar() {
             className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex items-center justify-between pointer-events-none"
           >
             {/* Logo */}
-            <a href={homeHref} className="pointer-events-auto group flex items-center gap-3">
+            <a
+              href={homeHref}
+              className="pointer-events-auto group flex items-center gap-3"
+            >
               <img
                 src="/logo-icon.svg"
                 alt="Ponira"
@@ -95,7 +102,9 @@ export default function Navbar() {
               aria-label="Menu"
             >
               <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                animate={
+                  mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }
+                }
                 className="block w-5 h-px bg-ponira-white/40 group-hover:bg-ponira-yellow transition-colors origin-center"
               />
               <motion.span
@@ -103,7 +112,9 @@ export default function Navbar() {
                 className="block w-5 h-px bg-ponira-white/40 group-hover:bg-ponira-yellow transition-colors"
               />
               <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                animate={
+                  mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
+                }
                 className="block w-5 h-px bg-ponira-white/40 group-hover:bg-ponira-yellow transition-colors origin-center"
               />
             </button>
