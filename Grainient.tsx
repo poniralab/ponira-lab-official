@@ -37,6 +37,9 @@ const hexToRgb = (hex: string): [number, number, number] => {
   ];
 };
 
+// Cor de fallback: ponira-brown #2B1B16
+const FALLBACK_BG = "#2B1B16";
+
 const vertex = `#version 300 es
 in vec2 position;
 void main() {
@@ -157,89 +160,109 @@ const Grainient: React.FC<GrainientProps> = ({
 
   useEffect(() => {
     if (!containerRef.current) return;
-
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
-    });
-
-    const gl = renderer.gl;
-    const canvas = gl.canvas as HTMLCanvasElement;
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
-    canvas.style.display = "block";
-
     const container = containerRef.current;
-    container.appendChild(canvas);
 
-    const geometry = new Triangle(gl);
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uTimeSpeed: { value: timeSpeed },
-        uColorBalance: { value: colorBalance },
-        uWarpStrength: { value: warpStrength },
-        uWarpFrequency: { value: warpFrequency },
-        uWarpSpeed: { value: warpSpeed },
-        uWarpAmplitude: { value: warpAmplitude },
-        uBlendAngle: { value: blendAngle },
-        uBlendSoftness: { value: blendSoftness },
-        uRotationAmount: { value: rotationAmount },
-        uNoiseScale: { value: noiseScale },
-        uGrainAmount: { value: grainAmount },
-        uGrainScale: { value: grainScale },
-        uGrainAnimated: { value: grainAnimated ? 1.0 : 0.0 },
-        uContrast: { value: contrast },
-        uGamma: { value: gamma },
-        uSaturation: { value: saturation },
-        uCenterOffset: { value: new Float32Array([centerX, centerY]) },
-        uZoom: { value: zoom },
-        uColor1: { value: new Float32Array(hexToRgb(color1)) },
-        uColor2: { value: new Float32Array(hexToRgb(color2)) },
-        uColor3: { value: new Float32Array(hexToRgb(color3)) },
-      },
-    });
+    // ── Verifica suporte a WebGL2 antes de tentar criar o renderer ──
+    const testCanvas = document.createElement("canvas");
+    const hasWebGL2 = !!testCanvas.getContext("webgl2");
+    if (!hasWebGL2) {
+      // Sem WebGL2: aplica a cor de fundo diretamente e encerra
+      container.style.backgroundColor = FALLBACK_BG;
+      return;
+    }
 
-    const mesh = new Mesh(gl, { geometry, program });
-
-    const setSize = () => {
-      const rect = container.getBoundingClientRect();
-      const width = Math.max(1, Math.floor(rect.width));
-      const height = Math.max(1, Math.floor(rect.height));
-      renderer.setSize(width, height);
-      const res = (program.uniforms.iResolution as { value: Float32Array })
-        .value;
-      res[0] = gl.drawingBufferWidth;
-      res[1] = gl.drawingBufferHeight;
-    };
-
-    const ro = new ResizeObserver(setSize);
-    ro.observe(container);
-    setSize();
-
+    let renderer: Renderer;
     let raf = 0;
-    const t0 = performance.now();
-    const loop = (t: number) => {
-      (program.uniforms.iTime as { value: number }).value = (t - t0) * 0.001;
-      renderer.render({ scene: mesh });
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
 
-    return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      try {
-        container.removeChild(canvas);
-      } catch {
-        // Ignore
-      }
-    };
+    try {
+      renderer = new Renderer({
+        webgl: 2,
+        alpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
+      });
+
+      const gl = renderer.gl;
+
+      // Fallback de cor: se o canvas estiver visível mas sem render,
+      // exibe ponira-brown em vez do branco padrão do WebGL
+      gl.clearColor(43 / 255, 27 / 255, 22 / 255, 1.0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+
+      const canvas = gl.canvas as HTMLCanvasElement;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      canvas.style.display = "block";
+      container.appendChild(canvas);
+
+      const geometry = new Triangle(gl);
+      const program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          iTime: { value: 0 },
+          iResolution: { value: new Float32Array([1, 1]) },
+          uTimeSpeed: { value: timeSpeed },
+          uColorBalance: { value: colorBalance },
+          uWarpStrength: { value: warpStrength },
+          uWarpFrequency: { value: warpFrequency },
+          uWarpSpeed: { value: warpSpeed },
+          uWarpAmplitude: { value: warpAmplitude },
+          uBlendAngle: { value: blendAngle },
+          uBlendSoftness: { value: blendSoftness },
+          uRotationAmount: { value: rotationAmount },
+          uNoiseScale: { value: noiseScale },
+          uGrainAmount: { value: grainAmount },
+          uGrainScale: { value: grainScale },
+          uGrainAnimated: { value: grainAnimated ? 1.0 : 0.0 },
+          uContrast: { value: contrast },
+          uGamma: { value: gamma },
+          uSaturation: { value: saturation },
+          uCenterOffset: { value: new Float32Array([centerX, centerY]) },
+          uZoom: { value: zoom },
+          uColor1: { value: new Float32Array(hexToRgb(color1)) },
+          uColor2: { value: new Float32Array(hexToRgb(color2)) },
+          uColor3: { value: new Float32Array(hexToRgb(color3)) },
+        },
+      });
+
+      const mesh = new Mesh(gl, { geometry, program });
+
+      const setSize = () => {
+        const rect = container.getBoundingClientRect();
+        const width = Math.max(1, Math.floor(rect.width));
+        const height = Math.max(1, Math.floor(rect.height));
+        renderer.setSize(width, height);
+        const res = (program.uniforms.iResolution as { value: Float32Array }).value;
+        res[0] = gl.drawingBufferWidth;
+        res[1] = gl.drawingBufferHeight;
+      };
+
+      const ro = new ResizeObserver(setSize);
+      ro.observe(container);
+      setSize();
+
+      const t0 = performance.now();
+      const loop = (t: number) => {
+        (program.uniforms.iTime as { value: number }).value = (t - t0) * 0.001;
+        renderer.render({ scene: mesh });
+        raf = requestAnimationFrame(loop);
+      };
+      raf = requestAnimationFrame(loop);
+
+      return () => {
+        cancelAnimationFrame(raf);
+        ro.disconnect();
+        try {
+          container.removeChild(canvas);
+        } catch {
+          // já removido
+        }
+      };
+    } catch {
+      // WebGL2 disponível mas falhou ao criar contexto (limite de contextos no mobile)
+      container.style.backgroundColor = FALLBACK_BG;
+    }
   }, [
     timeSpeed,
     colorBalance,
@@ -269,6 +292,7 @@ const Grainient: React.FC<GrainientProps> = ({
     <div
       ref={containerRef}
       className={`relative h-full w-full overflow-hidden ${className}`.trim()}
+      style={{ backgroundColor: FALLBACK_BG }}
     />
   );
 };

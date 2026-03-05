@@ -1,7 +1,6 @@
 "use client";
 import Navbar from "@/app/components/Navbar";
 import Hero from "@/app/components/Hero";
-import Manifesto from "@/app/components/Manifesto";
 import Labs from "@/app/components/Labs";
 import Showcase from "@/app/components/Showcase";
 import CrossLab from "@/app/components/CrossLab";
