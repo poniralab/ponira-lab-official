@@ -46,9 +46,8 @@
 /* --- APLICAÇÃO GLOBAL --- */
 
 body {
-  background-color: var(--background);
-  font-family:
-    "ArchivoVariable", sans-serif; /* Archivo como padrão para o site todo */
+  background-color: #2B1B16 !important;
+  font-family: "ArchivoVariable", sans-serif;
   color: var(--foreground);
 }
 
