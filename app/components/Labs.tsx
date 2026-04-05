@@ -30,6 +30,15 @@ const labs = [
       "Arquitetura de sistemas, APIs e automação de processos. A engenharia bruta que sustenta a autoridade.",
     url: "https://systems.poniralab.com",
   },
+  {
+    id: "audiovisual",
+    category: "LAB_04 / LENTE",
+    title: "Audiovisual",
+    role: "Captação & Motion",
+    description:
+      "Criação de roteiros, edição de vídeo, fotografia e pós-produção. Materializando o movimento da marca.",
+    url: "https://motion.poniralab.com",
+  },
 ];
 
 export default function ManifestoLabs() {
@@ -43,17 +52,19 @@ export default function ManifestoLabs() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <p className="text-ponira-yellow font-mono text-[10px] tracking-[0.3em] font-bold mb-10 uppercase">
-            A Trindade Digital
+          <p className="text-ponira-yellow font-body text-[10px] tracking-[0.3em] font-bold mb-10 uppercase">
+            Ecossistema Digital
           </p>
           <p className="text-ponira-white font-body font-light text-lg leading-[2] max-w-[520px]">
             Na Ponira Lab, o design é a{" "}
             <span className="text-ponira-yellow font-semibold">alma</span> que
             projeta, a tecnologia é o{" "}
             <span className="text-ponira-yellow font-semibold">corpo</span> que
-            executa e a estratégia é a{" "}
+            executa, a estratégia é a{" "}
             <span className="text-ponira-yellow font-semibold">voz</span> que
-            comunica. Criamos organismos digitais onde a engenharia de software
+            comunica e o audiovisual é a{" "}
+            <span className="text-ponira-yellow font-semibold">lente</span> que
+            materializa a visão. Criamos organismos digitais onde a engenharia de software
             sustenta a vitalidade estética e a{" "}
             <span className="text-ponira-yellow font-semibold">voz</span> da
             marca. Unimos precisão técnica e sensibilidade para transformar

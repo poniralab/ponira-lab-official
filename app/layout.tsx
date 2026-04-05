@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Ponira Lab",
   },
   description:
-    "Agência boutique carioca com três frentes: Studio (design & branding), Creative (social media) e Systems (desenvolvimento & automação). Onde a alma do design encontra o corpo da tecnologia.",
+    "Agência boutique carioca com quatro frentes: Studio (design & branding), Creative (social media), Systems (desenvolvimento & automação) e Audiovisual (captação & motion). Onde a alma do design encontra o corpo da tecnologia.",
   keywords: [
     "agência de design",
     "branding",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Ponira Lab",
     title: "Ponira Lab — Design, Branding & Development",
     description:
-      "Agência boutique carioca com três frentes: Studio, Creative e Systems. Corpo, Alma & Voz.",
+      "Agência boutique carioca com quatro frentes: Studio, Creative, Systems e Audiovisual. Corpo, Alma, Voz & Lente.",
     images: [
       {
         // Crie uma og-image usando o logo-full.svg sobre fundo #2B1B16
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ponira Lab — Design, Branding & Development",
     description:
-      "Agência boutique carioca com três frentes: Studio, Creative e Systems.",
+      "Agência boutique carioca com quatro frentes: Studio, Creative, Systems e Audiovisual.",
     images: ["/og-image.png"],
   },
 

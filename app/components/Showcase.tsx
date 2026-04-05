@@ -16,7 +16,7 @@ export default function Showcase() {
           <h2 className="text-ponira-yellow font-display text-[10px] uppercase tracking-[0.5em] mb-6 font-bold opacity-85">
             Artefatos Selecionados
           </h2>
-          <p className="text-3xl md:text-4xl font-display text-ponira-white leading-normal">
+          <p className="text-3xl md:text-4xl font-body font-bold text-ponira-white leading-normal">
             Execuções que equilibram precisão técnica e intenção estética.
           </p>
         </div>

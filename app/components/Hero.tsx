@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -12,70 +11,60 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const blurValue = useTransform(
-    scrollYProgress,
-    [0, 0.8],
-    ["blur(0px)", "blur(15px)"],
-  );
-  const opacityValue = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const yValue = useTransform(scrollYProgress, [0, 1], ["0px", "100px"]);
+  const opacityValue = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const yValue = useTransform(scrollYProgress, [0, 1], ["0px", "60px"]);
 
   return (
     <section
       ref={targetRef}
-      className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center overflow-hidden"
+      className="relative min-h-screen flex items-end overflow-hidden"
     >
       <motion.div
-        style={{ filter: blurValue, opacity: opacityValue, y: yValue }}
-        className="max-w-6xl mx-auto w-full flex flex-col items-center"
+        style={{ opacity: opacityValue, y: yValue }}
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-24 md:pb-32 transform-gpu"
       >
+        {/* Label */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-ponira-yellow/60 font-body text-[9px] uppercase tracking-[0.5em] font-bold block mb-6"
+        >
+          Ponira Lab
+        </motion.span>
+
+        {/* Headline — posicionamento único */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[clamp(2.5rem,8vw,7rem)] font-display italic text-ponira-white leading-[0.95] max-w-5xl mb-10"
+        >
+          Não somos uma agência.
+          <br />
+          Somos um{" "}
+          <span className="text-ponira-yellow">laboratório.</span>
+        </motion.h1>
+
+        {/* Divisor + Subtítulo + CTA — grid inferior */}
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.5 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-10 pt-8 border-t border-ponira-white/10"
         >
-          {/*
-            width/height definem as proporções intrínsecas do SVG para o Next.js.
-            O tamanho visual real é controlado pelo Tailwind via className.
-            priority garante que o logo seja carregado como LCP asset.
-          */}
-          <Image
-            src="/logo-full.svg"
-            alt="Ponira Lab"
-            width={540}
-            height={200}
-            priority
-            className="w-64 sm:w-80 md:w-[420px] lg:w-[540px] h-auto"
-            style={{
-              filter:
-                "brightness(0) saturate(100%) invert(60%) sepia(90%) saturate(500%) hue-rotate(5deg) brightness(95%)",
-            }}
-          />
+          <p className="text-ponira-white/40 font-body font-light text-base md:text-lg max-w-md leading-relaxed">
+            Design, conteúdo, audiovisual e tecnologia —
+            quatro frentes, uma entrega coesa.
+          </p>
+
+          <a
+            href="/contato"
+            className="shrink-0 px-10 py-5 bg-ponira-yellow text-ponira-brown rounded-full font-body font-black text-[10px] hover:scale-[1.03] active:scale-[0.98] transition-transform duration-300 shadow-[0_0_25px_rgba(198,141,7,0.2)] uppercase tracking-[0.3em]"
+          >
+            Iniciar Projeto →
+          </a>
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
-          className="text-lg md:text-2xl text-ponira-white/80 mb-14 max-w-2xl font-body font-light leading-relaxed"
-        >
-          Onde a sensibilidade do design encontra a precisão da tecnologia.
-          Sistemas que{" "}
-          <span className="text-ponira-yellow font-semibold">
-            automatizam sua autoridade.
-          </span>
-        </motion.p>
-
-        <motion.a
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          href="/contato"
-          className="px-12 py-5 bg-ponira-yellow text-white rounded-full font-body text-sm hover:scale-105 transition shadow-2xl uppercase tracking-widest"
-        >
-          Iniciar Conexão
-        </motion.a>
       </motion.div>
     </section>
   );

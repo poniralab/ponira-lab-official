@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com", // Permite Vercel Analytics
               "style-src 'self' 'unsafe-inline'", // Necessário para Tailwind e animações
               "img-src 'self' blob: data: *.gravatar.com mir-s3-cdn-cf.behance.net images.unsplash.com", // Fontes das imagens dos seus cases
+              "media-src 'self' https://assets.mixkit.co https://commondatastorage.googleapis.com", // Permite carregamento de vídeos externos
               "connect-src 'self' *.gravatar.com", // Para sua busca de perfis no Gravatar
               "font-src 'self' data:",
               "object-src 'none'",

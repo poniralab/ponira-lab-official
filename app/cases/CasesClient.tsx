@@ -7,7 +7,6 @@ import Link from "next/link";
 import Grainient from "@/Grainient";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import ViewportBlur from "@/app/components/ViewportBlur";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { cases, labMeta, type Lab } from "@/lib/cases";
 
@@ -49,8 +48,6 @@ export default function CasesClient() {
       <div className="fixed inset-0 z-0">
         <Grainient color1="#5a5539" color2="#3b2e0f" color3="#9b682a" />
       </div>
-
-      <ViewportBlur />
 
       <div className="relative z-10">
         <Navbar />

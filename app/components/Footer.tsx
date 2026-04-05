@@ -18,6 +18,11 @@ const labs = [
     href: "https://systems.poniralab.com",
     color: "text-sky-400 border-sky-400/25 hover:bg-sky-400/10",
   },
+  {
+    name: "Audiovisual",
+    href: "https://motion.poniralab.com",
+    color: "text-emerald-400 border-emerald-400/25 hover:bg-emerald-400/10",
+  },
 ];
 
 const navLinks = [
@@ -30,7 +35,7 @@ const navLinks = [
 
 const socialLinks = [
   { label: "Instagram", href: "https://instagram.com/poniralab" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/poniralab" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/ponira-lab" },
   { label: "GitHub", href: "https://github.com/poniralab" },
   { label: "TikTok", href: "https://tiktok.com/@poniralab" },
   { label: "WhatsApp", href: "https://wa.me/5521998382038" },
@@ -84,21 +89,27 @@ export default function Footer() {
       />
 
       {/* ── HERO ── */}
-      <div className="px-6 md:px-12 pt-16 pb-12 border-b border-ponira-white/5 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
-        <h2 className="font-display italic text-ponira-white leading-[0.95] text-4xl md:text-6xl lg:text-7xl max-w-xl">
+      <div className="px-6 md:px-12 pt-24 pb-20 border-b border-ponira-white/5 flex flex-col items-center text-center gap-12">
+        <h2 className="font-display italic text-ponira-white leading-[0.95] text-4xl md:text-6xl lg:text-7xl max-w-3xl">
           Sua marca merece
           <br />
           existir com <span className="text-ponira-yellow">intenção.</span>
         </h2>
-        <Link
-          href="/contato"
-          className="group flex items-center gap-3 px-8 py-4 border border-ponira-yellow/20 rounded-full font-body text-[10px] uppercase tracking-widest text-ponira-yellow hover:bg-ponira-yellow hover:text-ponira-brown transition-all duration-300 whitespace-nowrap"
-        >
-          Iniciar projeto
-          <span className="group-hover:translate-x-1 transition-transform duration-300">
-            →
-          </span>
-        </Link>
+        
+        <div className="relative mt-2">
+          {/* Fundo que emite o pulso */}
+          <div className="absolute inset-0 bg-ponira-yellow rounded-full animate-ping opacity-30 duration-1000" style={{ animationDuration: '2.5s' }} />
+          
+          <Link
+            href="/contato"
+            className="relative group flex items-center gap-3 px-10 py-5 bg-ponira-yellow text-ponira-brown shadow-[0_0_30px_rgba(255,183,3,0.35)] hover:shadow-[0_0_50px_rgba(255,183,3,0.6)] rounded-full font-body text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all duration-300 whitespace-nowrap"
+          >
+            Iniciar projeto
+            <span className="group-hover:translate-x-1 transition-transform duration-300">
+              →
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/* ── GRID ── */}
@@ -109,8 +120,8 @@ export default function Footer() {
             Sobre
           </span>
           <p className="text-ponira-white/40 font-body font-light text-sm leading-relaxed mb-7 max-w-xs">
-            Boutique criativa carioca com três frentes integradas — design,
-            conteúdo e tecnologia com intenção.
+            Boutique criativa carioca com quatro frentes integradas — design,
+            conteúdo, audiovisual e tecnologia com intenção.
           </p>
           <div className="flex flex-wrap gap-2">
             {labs.map((lab) => (

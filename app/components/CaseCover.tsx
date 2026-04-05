@@ -20,6 +20,7 @@ const LAB_COLOR: Record<Lab, string> = {
   studio: "#FBBF24", // amber-400
   creative: "#FB7185", // rose-400
   systems: "#38BDF8", // sky-400
+  audiovisual: "#34D399", // emerald-400
 };
 
 interface CaseCoverProps {

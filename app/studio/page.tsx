@@ -6,7 +6,6 @@ import Link from "next/link";
 import Grainient from "@/Grainient";
 import NavbarLab from "@/app/components/NavbarLab";
 import Footer from "@/app/components/Footer";
-import ViewportBlur from "@/app/components/ViewportBlur";
 import { cases } from "@/lib/cases";
 import LogoLoop from "@/components/LogoLoop";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
@@ -30,7 +29,7 @@ const services = [
   {
     tier: "Plus",
     tagline: "Uma identidade que se sustenta.",
-    price: "R$ 1.800",
+    price: "R$ 2.000",
     highlight: true,
     includes: [
       "Tudo do Standard",
@@ -85,7 +84,6 @@ export default function StudioPage() {
       <div className="fixed inset-0 z-0">
         <Grainient color1="#5a5539" color2="#3b2e0f" color3="#9b682a" />
       </div>
-      <ViewportBlur />
 
       <div className="relative z-10">
         <NavbarLab />
@@ -145,7 +143,7 @@ export default function StudioPage() {
               </p>
             </div>
             <Link
-              href="/cases?lab=studio"
+              href="https://www.poniralab.com/cases?lab=studio"
               className="text-ponira-white/30 hover:text-amber-400 font-body text-xs uppercase tracking-widest pb-2 border-b border-ponira-white/10 hover:border-amber-400/40 transition-all duration-300 whitespace-nowrap"
             >
               Ver todos os cases →
@@ -166,7 +164,7 @@ export default function StudioPage() {
               >
                 <CardContainer containerClassName="w-full" className="w-full">
                   <CardBody className="w-full">
-                    <Link href={`/cases/${c.slug}`} className="block">
+                    <a href={`https://www.poniralab.com/cases/${c.slug}`} className="block">
                       {/* Cover */}
                       <CardItem translateZ="50" className="w-full">
                         <div className="aspect-video mb-6 overflow-hidden rounded-tr-[80px] rounded-bl-[80px] border border-ponira-white/5 relative bg-black/20">
@@ -203,7 +201,7 @@ export default function StudioPage() {
                           {c.subtitle}
                         </p>
                       </CardItem>
-                    </Link>
+                    </a>
                   </CardBody>
                 </CardContainer>
               </motion.div>

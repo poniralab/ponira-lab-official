@@ -8,7 +8,6 @@ import Founders from "@/app/components/Founders";
 import Footer from "@/app/components/Footer";
 import Grainient from "../Grainient";
 import SectionReveal from "./components/Sectionreveal";
-import ViewportBlur from "./components/ViewportBlur";
 import Testimonials from "@/app/components/Testimonials";
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
       <div className="fixed inset-0 z-0">
         <Grainient color1="#5a5539" color2="#3b2e0f" color3="#9b682a" />
       </div>
-      <ViewportBlur />
       <div className="relative z-10">
         <Navbar />
         <Hero />

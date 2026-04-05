@@ -8,10 +8,10 @@ export default function Founders() {
   return (
     <section className="py-32 px-6 max-w-7xl mx-auto">
       <div className="mb-20">
-        <h2 className="text-ponira-yellow font-body text-[10px] uppercase tracking-[0.5em] mb-6 font-bold opacity-60">
+        <h2 className="text-ponira-yellow font-body text-[10px] font-bold uppercase tracking-[0.5em] mb-6 opacity-60">
           As Sócias
         </h2>
-        <p className="text-3xl md:text-5xl font-display text-ponira-white italic leading-tight max-w-3xl">
+        <p className="text-3xl md:text-5xl font-body text-ponira-white font-bold leading-tight max-w-3xl">
           A fusão entre a arquitetura de sistemas e a direção de arte
           estratégica.
         </p>

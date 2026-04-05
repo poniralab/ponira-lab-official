@@ -39,8 +39,8 @@ const packages = [
     name: "Ecossistema Digital",
     tagline: "Tudo que uma marca precisa para crescer com consistência.",
     price: "R$ 7.500",
-    labs: ["Studio", "Systems", "Creative"],
-    labColors: ["text-amber-400", "text-sky-400", "text-rose-400"],
+    labs: ["Studio", "Systems", "Creative", "Audiovisual"],
+    labColors: ["text-amber-400", "text-sky-400", "text-rose-400", "text-emerald-400"],
     includes: [
       "Tudo do Presença Completa",
       "Automações e integrações",
@@ -56,17 +56,22 @@ const labLinks = [
   {
     name: "Studio",
     href: "https://studio.poniralab.com",
-    color: "text-amber-400/60 hover:text-amber-400",
+    style: "text-amber-400 border-amber-400/30 hover:bg-amber-400/10 hover:border-amber-400",
   },
   {
     name: "Creative",
     href: "https://creative.poniralab.com",
-    color: "text-rose-400/60 hover:text-rose-400",
+    style: "text-rose-400 border-rose-400/30 hover:bg-rose-400/10 hover:border-rose-400",
   },
   {
     name: "Systems",
     href: "https://systems.poniralab.com",
-    color: "text-sky-400/60 hover:text-sky-400",
+    style: "text-sky-400 border-sky-400/30 hover:bg-sky-400/10 hover:border-sky-400",
+  },
+  {
+    name: "Audiovisual",
+    href: "https://motion.poniralab.com",
+    style: "text-emerald-400 border-emerald-400/30 hover:bg-emerald-400/10 hover:border-emerald-400",
   },
 ];
 
@@ -76,11 +81,11 @@ export default function CrossLab() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-6">
         <div className="max-w-xl">
-          <h2 className="text-ponira-yellow font-display text-[10px] uppercase tracking-normal mb-6 font-bold opacity-85">
+          <h2 className="text-ponira-yellow font-display text-[10px] uppercase tracking-widest mb-6 font-bold opacity-85">
             Pacotes Cross-Lab
           </h2>
-          <p className="text-3xl md:text-4xl font-display text-ponira-white tracking-normal leading-normal">
-            Três frentes. Uma entrega coesa.
+          <p className="text-3xl md:text-4xl font-body font-bold text-ponira-white tracking-normal leading-normal">
+            Quatro frentes. Uma entrega coesa.
           </p>
         </div>
         <p className="text-ponira-white/30 font-body font-light text-sm max-w-xs text-right leading-relaxed">
@@ -102,7 +107,7 @@ export default function CrossLab() {
           >
             {/* Badge destaque — fora do CardContainer para não ser afetado pelo tilt */}
             {pkg.highlight && (
-              <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 z-20">
+              <div className="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-20">
                 <span className="text-[9px] font-body font-black uppercase tracking-widest px-3 py-1 bg-ponira-yellow text-ponira-brown rounded-full">
                   +escolhido
                 </span>
@@ -111,11 +116,10 @@ export default function CrossLab() {
 
             <CardContainer containerClassName="w-full" className="w-full">
               <CardBody
-                className={`relative flex flex-col rounded-tr-[80px] rounded-bl-[80px] border transition-colors duration-300 h-full ${
-                  pkg.highlight
+                className={`relative flex flex-col rounded-tr-[80px] rounded-bl-[80px] border transition-colors duration-300 h-full ${pkg.highlight
                     ? "border-ponira-yellow/30 bg-ponira-yellow/5"
                     : "border-ponira-white/5 bg-black/10 hover:border-ponira-white/10"
-                }`}
+                  }`}
                 style={{ padding: "32px 56px 56px 32px" }}
               >
                 <div className="relative z-10 flex flex-col h-full">
@@ -168,21 +172,12 @@ export default function CrossLab() {
                     translateZ="60"
                     className="border-t border-ponira-white/5 pt-6 flex flex-col gap-4"
                   >
-                    <div>
-                      <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-1">
-                        A partir de
-                      </span>
-                      <span className="text-2xl font-display text-ponira-white">
-                        {pkg.price}
-                      </span>
-                    </div>
                     <Link
                       href={pkg.cta}
-                      className={`text-center py-3 rounded-full font-body text-[10px] uppercase tracking-widest transition-all duration-300 ${
-                        pkg.highlight
+                      className={`text-center py-3 rounded-full font-body text-[10px] uppercase tracking-widest transition-all duration-300 ${pkg.highlight
                           ? "bg-ponira-yellow text-ponira-brown hover:scale-[1.02]"
                           : "border border-ponira-white/10 text-ponira-white/50 hover:border-ponira-yellow/30 hover:text-ponira-yellow"
-                      }`}
+                        }`}
                     >
                       Solicitar orçamento
                     </Link>
@@ -200,19 +195,19 @@ export default function CrossLab() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="flex flex-col md:flex-row items-center justify-between gap-6 pt-10 border-t border-ponira-white/5"
+        className="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-ponira-white/5 mt-10"
       >
-        <p className="text-ponira-white/20 font-body font-light text-sm">
-          Precisa de só uma frente? Explore os labs individualmente →
+        <p className="text-ponira-white/30 font-body font-light text-sm">
+          Precisa de só uma de nossas frentes? Explore individualmente →
         </p>
-        <div className="flex gap-8">
+        <div className="flex flex-wrap justify-center gap-4">
           {labLinks.map((lab) => (
             <a
               key={lab.name}
               href={lab.href}
-              className={`font-body text-[10px] uppercase tracking-widest transition-colors duration-300 ${lab.color}`}
+              className={`font-body text-[10px] uppercase tracking-widest px-6 py-3 rounded-full border transition-all duration-300 hover:-translate-y-1 shadow-lg ${lab.style}`}
             >
-              {lab.name} ↗
+              {lab.name} <span className="opacity-50 ml-1">↗</span>
             </a>
           ))}
         </div>

@@ -1,4 +1,4 @@
-export type Lab = "studio" | "creative" | "systems";
+export type Lab = "studio" | "creative" | "systems" | "audiovisual";
 
 export interface CaseStudy {
   slug: string;
@@ -461,5 +461,9 @@ export const labMeta: Record<Lab, { label: string; description: string }> = {
   systems: {
     label: "Systems / Corpo",
     description: "Desenvolvimento, automação e arquitetura de dados.",
+  },
+  audiovisual: {
+    label: "Audiovisual / Lente",
+    description: "Captação, edição e produção audiovisual.",
   },
 };

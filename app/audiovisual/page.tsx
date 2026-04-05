@@ -12,68 +12,38 @@ import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 
 // ─── DADOS ────────────────────────────────────────────────────────────────
 
-const creativeCases = cases.filter((c) => c.lab === "creative");
+const audiovisualCases = cases.filter((c) => c.lab === "audiovisual");
 
 const services = [
   {
-    tier: "Standard",
-    tagline: "Presença consistente no dia a dia.",
-    price: "R$ 1.000",
-    suffix: "/mês",
+    tier: "Pré-Produção",
+    tagline: "A base de toda grande história.",
+    highlight: false,
     includes: [
-      "12 posts/mês",
-      "2 formatos (feed + stories)",
-      "1 rede social",
-      "Planejamento mensal de conteúdo",
-      "Entrega com 5 dias de antecedência",
+      "Criação de roteiro para vídeos curtos (Reels/TikTok)",
+      "Criação de roteiro para formato longo (YouTube)",
+      "Planejamento de cenas",
     ],
   },
   {
-    tier: "Plus",
-    tagline: "Estratégia que cresce junto com a marca.",
-    price: "R$ 1.500",
-    suffix: "/mês",
+    tier: "Produção",
+    tagline: "Registrando o movimento.",
     highlight: true,
     includes: [
-      "20 posts/mês",
-      "3 formatos (feed + stories + reels roteiro)",
-      "Até 2 redes sociais",
-      "Planejamento + calendário editorial",
-      "Relatório quinzenal de performance",
-      "Entrega com 7 dias de antecedência",
+      "Captação de fotos",
+      "Captação de vídeos em resolução 4K",
+      "Direção de arte no set",
     ],
   },
   {
-    tier: "Premium",
-    tagline: "Ecossistema de conteúdo de alto nível.",
-    price: "R$ 3.000",
-    suffix: "/mês",
+    tier: "Pós-Produção",
+    tagline: "A mágica na ilha de edição.",
+    highlight: false,
     includes: [
-      "30 posts/mês",
-      "Formatos ilimitados",
-      "3 redes sociais",
-      "Estratégia completa de conteúdo",
-      "Relatório mensal detalhado",
-      "1 campanha especial/mês",
-      "Entrega com 10 dias de antecedência",
+      "Edição de vídeo dinâmica",
+      "Edição de fotos profissional",
+      "Color grading",
     ],
-  },
-];
-
-const addons = [
-  {
-    name: "Identidade visual para redes (kit de templates)",
-    price: "+ R$ 500",
-  },
-  { name: "Roteiro e direção de vídeo (reels/tiktok)", price: "+ R$ 400/mês" },
-  { name: "Gestão de comentários e DMs", price: "+ R$ 300/mês" },
-  {
-    name: "Campanha pontual (lançamento, data especial)",
-    price: "a partir de R$ 400",
-  },
-  {
-    name: "Identidade visual para stories (destaques + highlights)",
-    price: "+ R$ 250",
   },
 ];
 
@@ -127,16 +97,15 @@ export default function CreativePage() {
               <span className="text-ponira-white/20 font-body text-[9px]">
                 ✦
               </span>
-              <span className="text-rose-400/60 font-body text-[9px] uppercase tracking-[0.5em] font-black">
-                Creative
+              <span className="text-purple-400/60 font-body text-[9px] uppercase tracking-[0.5em] font-black">
+                Audiovisual
               </span>
             </div>
             <h1 className="text-6xl md:text-8xl font-display italic text-ponira-white leading-[0.9] mb-8">
-              Voz.
+              Movimento.
             </h1>
             <p className="text-ponira-white/50 font-body font-light text-xl max-w-lg leading-relaxed mb-10">
-              Social Media & Marketing. Conteúdo que para o scroll, comunica com
-              intenção e constrói presença real nas redes.
+              Criação de roteiro, captação e edição. Transformamos mensagens em impacto visual.
             </p>
             <div className="flex flex-wrap gap-3">
               <LogoLoop
@@ -198,7 +167,7 @@ export default function CreativePage() {
               </p>
             </div>
             <Link
-              href="https://www.poniralab.com/cases?lab=creative"
+              href="https://www.poniralab.com/cases?lab=audiovisual"
               className="text-ponira-white/30 hover:text-rose-400 font-body text-xs uppercase tracking-widest pb-2 border-b border-ponira-white/10 hover:border-rose-400/40 transition-all duration-300 whitespace-nowrap"
             >
               Ver todos os cases →
@@ -206,7 +175,7 @@ export default function CreativePage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            {creativeCases.map((c, i) => (
+            {audiovisualCases.map((c, i) => (
               <motion.div
                 key={c.slug}
                 initial={{ opacity: 0, y: 30 }}
@@ -322,7 +291,7 @@ export default function CreativePage() {
                       <ul className="space-y-3">
                         {svc.includes.map((item) => (
                           <li key={item} className="flex items-start gap-3">
-                            <span className="text-rose-400 mt-0.5 text-xs">
+                            <span className="text-purple-400 mt-0.5 text-xs">
                               ✦
                             </span>
                             <span className="text-ponira-white/60 font-body font-light text-sm leading-relaxed">
@@ -333,30 +302,17 @@ export default function CreativePage() {
                       </ul>
                     </CardItem>
 
-                    {/* Preço + CTA */}
+                    {/* CTA */}
                     <CardItem
                       translateZ="60"
                       className="border-t border-ponira-white/5 pt-6 flex flex-col gap-4"
                     >
-                      <div>
-                        <span className="text-ponira-white/20 font-body text-[9px] uppercase tracking-widest block mb-1">
-                          A partir de
-                        </span>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-2xl font-display text-ponira-white">
-                            {svc.price}
-                          </span>
-                          <span className="text-ponira-white/30 font-body text-sm">
-                            {svc.suffix}
-                          </span>
-                        </div>
-                      </div>
                       <a
                         href="https://www.poniralab.com/contato"
                         className={`text-center py-3 rounded-full font-body text-[10px] uppercase tracking-widest transition-all duration-300 ${
                           svc.highlight
-                            ? "bg-rose-400 text-ponira-brown hover:scale-[1.02]"
-                            : "border border-ponira-white/10 text-ponira-white/50 hover:border-rose-400/30 hover:text-rose-400"
+                            ? "bg-purple-400 text-ponira-brown hover:scale-[1.02]"
+                            : "border border-ponira-white/10 text-ponira-white/50 hover:border-purple-400/30 hover:text-purple-400"
                         }`}
                       >
                         Solicitar orçamento
@@ -367,34 +323,6 @@ export default function CreativePage() {
               </motion.div>
             ))}
           </div>
-
-          {/* Add-ons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="border border-ponira-white/5 rounded-tr-[80px] rounded-bl-[80px] p-8 bg-black/10"
-          >
-            <h3 className="text-ponira-white/60 font-body text-[10px] uppercase tracking-widest font-black mb-6">
-              Módulos extras — adicione ao seu plano
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {addons.map((addon) => (
-                <div
-                  key={addon.name}
-                  className="flex justify-between items-center py-3 border-b border-ponira-white/5 last:border-0"
-                >
-                  <span className="text-ponira-white/50 font-body font-light text-sm">
-                    {addon.name}
-                  </span>
-                  <span className="text-rose-400/70 font-body text-xs font-black tracking-wider ml-4 whitespace-nowrap">
-                    {addon.price}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </section>
 
         {/* ── BLOG PLACEHOLDER ── */}
@@ -407,15 +335,15 @@ export default function CreativePage() {
             className="flex flex-col md:flex-row justify-between items-center gap-10 py-16 px-12 border border-ponira-white/5 rounded-tr-[80px] rounded-bl-[80px] bg-black/10"
           >
             <div>
-              <h2 className="text-rose-400 font-display text-[10px] uppercase tracking-[0.5em] mb-4 font-bold opacity-85">
+              <h2 className="text-purple-400 font-display text-[10px] uppercase tracking-[0.5em] mb-4 font-bold opacity-85">
                 Conteúdo
               </h2>
               <p className="text-3xl font-display italic text-ponira-white mb-3">
-                Diário do Creative.
+                Diário do Audiovisual.
               </p>
               <p className="text-ponira-white/40 font-body font-light text-sm max-w-sm leading-relaxed">
-                Artigos sobre estratégia de conteúdo, tendências de social media
-                e o que a Carol aprende criando para marcas reais.
+                Bastidores das produções, dicas de roteiro, captação audiovisual
+                e o que a equipe aprende no set.
               </p>
             </div>
             <div className="flex flex-col items-center gap-3 shrink-0">

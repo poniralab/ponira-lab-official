@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 import MetallicLogo from "@/app/components/MetallicLogo";
 export default function Manifesto() {
   const text =
-    "Na Ponira Lab, o design é a alma que projeta, a tecnologia é o corpo que executa e a estratégia é a voz que comunica. Criamos organismos digitais onde a engenharia de software sustenta a vitalidade estética e a voz da marca. Unimos precisão técnica e sensibilidade para transformar negócios em infraestruturas de alta performance e autoridade absoluta.";
+    "Na Ponira Lab, o design é a alma que projeta, a tecnologia é o corpo que executa, a estratégia é a voz que comunica e o audiovisual é a lente que materializa a visão. Criamos organismos digitais onde a engenharia de software sustenta a vitalidade estética e a voz da marca. Unimos precisão técnica e sensibilidade para transformar negócios em infraestruturas de alta performance e autoridade absoluta.";
 
   const words = text.split(" ");
 
   // Palavras que ganharão o destaque no novo amarelo
-  const highlights = ["alma", "corpo", "voz", "autoridade"];
+  const highlights = ["alma", "corpo", "voz", "lente", "autoridade"];
 
   return (
     <section className="py-32 px-6 max-w-7xl mx-auto flex items-center">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full">
         <div className="md:col-span-7 lg:col-span-6">
           <h2 className="text-ponira-yellow font-body text-[10px] uppercase tracking-[0.5em] mb-8 font-bold opacity-85">
-            A Trindade Digital
+            Ecossistema Digital
           </h2>
 
           <div className="flex flex-wrap gap-x-2 gap-y-3">
