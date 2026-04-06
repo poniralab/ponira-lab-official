@@ -1,29 +1,29 @@
 // proxy.ts
-
 import { NextRequest, NextResponse } from "next/server";
 
-export function proxy(req: NextRequest) {
-  // ← precisa ser "proxy"
-  const host = req.headers.get("host") || "";
+const SUBDOMAIN_MAP: Record<string, string> = {
+  linktree: "/linktree",
+  studio: "/studio",
+  creative: "/creative",
+  systems: "/systems",
+  motion: "/audiovisual", 
+};
 
-  if (host.startsWith("linktree.")) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/linktree";
-    return NextResponse.rewrite(url);
-  }
-  if (host.startsWith("studio.")) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/studio";
-    return NextResponse.rewrite(url);
-  }
-  if (host.startsWith("creative.")) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/creative";
-    return NextResponse.rewrite(url);
-  }
-  if (host.startsWith("systems.")) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/systems";
+export function proxy(req: NextRequest) {
+  const host = req.headers.get("host") || "";
+  const url = req.nextUrl.clone();
+  const subdomain = host.split(".")[0];
+
+  const targetPath = SUBDOMAIN_MAP[subdomain];
+
+  if (targetPath) {
+    if (url.pathname.startsWith(targetPath)) {
+      return NextResponse.next();
+    }
+    url.pathname = `${targetPath}${url.pathname === "/" ? "" : url.pathname}`;
+
+    console.log(`🎯 Proxy [${subdomain}] -> ${url.pathname}`);
+
     return NextResponse.rewrite(url);
   }
 
